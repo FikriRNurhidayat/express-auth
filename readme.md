@@ -5,7 +5,7 @@ This is an example implementation of express authentication API using JWT.
 * Clone this repository
 * ```npm install```
 * ```touch .env```
-* Set up your [.env](#.env)
+* Set up your [.env](https://github.com/FikriRNurhidayat/express_auth/blob/master/readme.md#env)
 * ```npm start```
 
 ## .env
