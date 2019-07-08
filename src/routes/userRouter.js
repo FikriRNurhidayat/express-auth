@@ -4,5 +4,6 @@ const authorize = require('../helpers/authenticate.js');
 
 router.post('/', userController.createUser);
 router.get('/', authorize, userController.whoAmI);
+router.post('/hashMe', userController.hashMe);
 
 module.exports = router;

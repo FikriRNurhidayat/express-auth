@@ -44,5 +44,10 @@ module.exports = {
       .catch(err => {
         res.json(errorsResponse(err));
       })
+  },
+
+  hashMe(req, res) {
+    var encryptedData = encryptor(req.body.value);
+    res.json(successResponse(encryptedData));
   }
 }

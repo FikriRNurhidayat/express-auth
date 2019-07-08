@@ -13,14 +13,14 @@ module.exports = {
       .then(data => {
 	var isPasswordCorrect = bcrypt.compareSync(req.body.password, data.password);
 	if (!isPasswordCorrect) {
-	  return res.json(errorsResponse("Wrong password!"));
+	  return res.status(422).json(errorsResponse("Wrong password!"));
 	}
 
 	var token = jwt.sign({_id: data._id}, process.env.SECRET_OR_KEY);
 	res.status(201).json(successResponse(token));
       })
       .catch(err => {
-        res.json(errorsResponse("User doesn't exist!"))
+        res.status(404).json(errorsResponse("User doesn't exist!"))
       })
   }
 }
