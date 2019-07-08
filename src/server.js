@@ -6,6 +6,8 @@ if (!env || env == 'development') {
  dotenv.config();
 }
 
+const responseFormatter = require('./helpers/responseFormatter.js');
+
 const express = require('express');
 const app = express();
 const port = process.env.PORT || 8000;
@@ -16,6 +18,10 @@ mongoose.connect(process.env.DB_CONNECTION, { useNewUrlParser: true }, (err) => 
   if (err) return console.log(err);
   console.log('Database Connected!');
 });
+
+app.all('/', (req, res) => {
+  res.status(200).json(responseFormatter.successResponse('Server is working, right?'))
+})
 
 // Using body-parser
 const bodyParser = require('body-parser'); // Import body-parser library
