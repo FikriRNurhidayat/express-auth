@@ -3,6 +3,7 @@ const { successResponse, errorsResponse } = require('../helpers/responseFormatte
 const encryptor = require('../helpers/bcrypt.js');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
+const { sendEmail, format, confirmation, confirmed } = require('../helpers/mailer.js');
 
 module.exports = {
 
@@ -22,11 +23,28 @@ module.exports = {
       password: encryptedPassword
     });
     userPromise.save()
-      .then(() => {
+      .then((user) => {
+	let verifyLink = jwt.sign({_id: user.email}, process.env.SECRET_OR_KEY);
+	let regMail = format(req.body.email, 'Welcome to Express Auth', confirmation(user, verifyLink));
+	sendEmail(regMail);
         res.json(successResponse('User created!'));
       })
      .catch(err => {
 	console.log(err);
+        res.json(errorsResponse(err));
+      })
+  },
+
+  confirmUser(req, res) {
+    let userId = jwt.verify(req.params.id, process.env.SECRET_OR_KEY);
+    console.log(userId._id);
+    User.updateOne({ email: userId._id }, { isVerified: true })
+      .then(() => {
+	let confirmAedMail = format(userId._id, 'Thanks for your confirmation!', confirmed());
+	sendEmail(confirmedMail);
+        res.render('index');
+      })
+      .catch(err => {
         res.json(errorsResponse(err));
       })
   },
@@ -44,10 +62,6 @@ module.exports = {
       .catch(err => {
         res.json(errorsResponse(err));
       })
-  },
-
-  hashMe(req, res) {
-    var encryptedData = encryptor(req.body.value);
-    res.json(successResponse(encryptedData));
   }
+
 }
