@@ -4,7 +4,7 @@ const { errorsResponse } = require('./responseFormatter.js');
 module.exports = function (req, res, next) {
   var headerToken = req.headers.authorization;
   if (!headerToken) {
-    res.json(errorsResponse('Denied!'));
+    return res.status(403).json(errorsResponse('Denied!'));
   }
 
   var isUser = jwt.verify(headerToken, process.env.SECRET_OR_KEY);
@@ -12,6 +12,6 @@ module.exports = function (req, res, next) {
     req.user = isUser;
     next();
   } else {
-    res.status(400).json(errorsResponse('Invalid token!'));
+    return res.status(403).json(errorsResponse('Invalid token!'));
   }
 }

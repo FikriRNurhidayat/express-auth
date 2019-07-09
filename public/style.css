@@ -1,0 +1,103 @@
+body {
+  margin: 0;
+  width:100%;
+  font-family: 'Roboto', sans-serif; 
+}
+
+#a1 {
+  width:100%;
+  height:100vh;
+}
+
+#b11 {
+  width:50%;
+  position:relative;
+  top:50%;
+  left:50%;
+  transform: translate(-50%, -50%);
+  padding: 2px;
+}
+
+#c11 {
+  text-align:center;
+  margin:0;
+}
+
+#c11 h1 {
+  margin:0;
+  font-weight:bold;
+  font-size:2.5em;
+}
+
+#c21 {
+  text-align:center;
+  margin:0;
+  padding:3.5%;
+}
+
+#c21 h5 {
+  margin:0;
+  font-size:1.5em;
+  font-weight:normal;
+}
+
+#c31 {
+  text-align:center;
+  padding:10px;
+}
+
+#c31 a {
+  padding: 10px 10px;
+  background:#000;
+  text-decoration:none;
+  color:#fff;
+  font-weight:bold;
+  text-transform:uppercase;
+}
+
+#a2 {
+  width:100%;
+  height:100vh;
+  background:#000;
+}
+
+#b12 {
+  width:50%;
+  position:relative;
+  top:50%;
+  left:50%;
+  transform: translate(-50%, -50%);
+  padding: 2px
+}
+
+#c12 {
+  text-align:center;
+  text-transform:uppercase;
+  color:#fff;
+  font-size:2em;
+}
+
+#c22 {
+  text-align:center;
+  color:#fff;
+}
+
+#c22 label {
+  font-size:1.3em;
+}
+
+#c22 input {
+  margin:10px;
+  padding:10px;
+}
+
+#c22 button {
+  margin:10px;
+  border:none;
+  padding:10px;
+  background-color:white;
+  text-decoration:none;
+  color:#000;
+  text-transform:uppercase;
+  font-size:1em;
+}

@@ -19,8 +19,11 @@ mongoose.connect(process.env.DB_CONNECTION, { useNewUrlParser: true }, (err) => 
   console.log('Database Connected!');
 });
 
+// Root path
+app.set('view engine', 'ejs');
+app.use(express.static(__dirname + '/../public'));
 app.all('/', (req, res) => {
-  res.status(200).json(responseFormatter.successResponse('Server is working, right?'))
+  res.render('index')
 })
 
 // Using body-parser
