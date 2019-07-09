@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Express-Auth</title>
+    <title>Express-Auth</title> 
+    <link rel="icon" href="/favicon.ico" type="image/x-icon"/>
     <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet"> 
     <link rel="stylesheet" type="text/css" href="/style.css"/>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="/layout.js"></script>
   </head>
   <body>
     <section id="a1">
@@ -21,22 +23,30 @@
       </div>
     </section>
     <section id="a2">
-      <div id="b12">
-        <div id="c12">
-          <h1>Login</h1>
+        <div id="b12">
+          <div id="c12">
+            <h1>Login</h1>
+          </div>
+          <div id="c22">
+            <form>
+              <label for="email">Email</label><br>
+              <input type="email" id="email"><br>
+              <label for="password">Password</label><br>
+              <input type="text" name="password" id="password"><br>
+              <button type="button" id="loginButton">Login</button>
+            </form>
+          </div>
+	  <div id="c32">
+	    <button type="button" id="signUp">Don't have account yet?</button> 
+          </div>
+	  <div id="c42">
+            <button type="button" id="forgotPassword">Forgot Your Password?</button>
+	  </div>
         </div>
-        <div id="c22">
-          <form>
-            <label for="email">Email</label><br>
-            <input type="email" id="email"><br>
-            <label for="password">Password</label><br>
-            <input type="password" id="psw"><br>
-            <button type="button" id="loginButton">Login</button>
-          </form>
-        </div>
-	<div id="c32">
-	</div>A
-      </div>
+	<div id="b22">
+	  <h1 id="c-user"></h1>
+	  <button type="button" id="logoutButton">Logout</button>
+	</div>	
     </section>
   </body>
   <script src="/main.js"></script>

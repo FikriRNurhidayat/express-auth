@@ -6,6 +6,7 @@ const bcrypt = require('bcryptjs');
 module.exports = {
 
   login(req, res) {
+    console.log(req.body);
     // Validate if email exists
     User.findOne({
       email: req.body.email

@@ -67,7 +67,7 @@ body {
   top:50%;
   left:50%;
   transform: translate(-50%, -50%);
-  padding: 2px
+  padding: 2px;
 }
 
 #c12 {
@@ -87,6 +87,11 @@ body {
 }
 
 #c22 input {
+  color:#000;
+  font-weight: lighter;
+  font-size:0.8em;
+  text-align: center;
+  width:30%;
   margin:10px;
   padding:10px;
 }
@@ -100,4 +105,57 @@ body {
   color:#000;
   text-transform:uppercase;
   font-size:1em;
+  font-weight:bold;
 }
+
+#c32 {
+  text-align: center;
+}
+
+#c42 {
+  margin:10px;
+  text-align:center;
+}
+
+#signUp {
+  font-size:0.6em;
+  padding:5px 16px;
+  background:none;
+  color:#fff;
+  border:solid 1px #fff;
+  border-radius: 20px;
+}
+
+#signUp:hover {
+  color:#000;
+  background:rgba(255,255,255);
+}
+
+#forgotPassword {
+  font-size:0.6em;
+  padding:5px 16px;
+  background:none;
+  color:#fff;
+  border:solid 1px #fff;
+  border-radius: 20px;
+}
+
+#b22 {
+  color:#fff;
+  text-align:center;
+  font-size:2em;
+  position:relative;
+  top:50%;
+  left:50%;
+  transform:translate(-50%, -50%);
+}
+
+#logoutButton {
+  padding:10px;
+  color:#000;
+  border:none;
+  font-weight: bold;
+  text-transform:uppercase;
+  font-size:0.5em;
+}
+
