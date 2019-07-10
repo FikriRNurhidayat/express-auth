@@ -4,7 +4,7 @@ const env = process.env.NODE_ENV;
 if (!env || env == 'development') {
  const dotenv = require('dotenv');
  dotenv.config();
-}
+};
 
 const responseFormatter = require('./helpers/responseFormatter.js');
 
@@ -19,6 +19,12 @@ mongoose.connect(process.env.DB_CONNECTION, { useNewUrlParser: true }, (err) => 
   if (err) return console.log(err);
   console.log('Database Connected!');
 });
+
+app.use((req, res, next) => {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+})
 
 // Root path
 app.set('view engine', 'ejs');
