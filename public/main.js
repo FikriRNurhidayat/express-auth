@@ -6,13 +6,13 @@ $('#loginButton').click(()=> {
   if (email != "" && password !="") {
     $.ajax({
       type: "POST",
-      url: "http://localhost:8000/api/auth/login",
+      url: "https://api-auth-training.herokuapp.com/api/auth/login",
       data: {
         email: email,
         password: password
       },
       success: function(res) {
-	console.log(res);
+	console.log(rAes);
         if (res.status == "OK") {
 	  console.log("Oke");
           localStorage.setItem('token', res.result);
@@ -41,7 +41,7 @@ if (token) {
     headers: {
       "Authorization": token
     },
-    url: "http://localhost:8000/api/users",
+    url: "https://api-auth-training.herokuapp.com/api/users",
     success: function(res) {
       if (res.status == "OK") {
         document.getElementById("c-user").innerHTML = `Hi, ${res.result.name}!`;
