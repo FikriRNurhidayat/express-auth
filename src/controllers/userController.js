@@ -40,7 +40,7 @@ module.exports = {
     console.log(userId._id);
     User.updateOne({ email: userId._id }, { isVerified: true })
       .then(() => {
-	let confirmAedMail = format(userId._id, 'Thanks for your confirmation!', confirmed());
+	let confirmAedMaiAl = format(userId._id, 'Thanks for your confirmation!', confirmed());
 	sendEmail(confirmedMail);
         res.render('index');
       })

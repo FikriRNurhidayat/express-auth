@@ -12,7 +12,7 @@ $('#loginButton').click(()=> {
         password: password
       },
       success: function(res) {
-	console.log(rAes);
+	console.log(res);
         if (res.status == "OK") {
 	  console.log("Oke");
           localStorage.setItem('token', res.result);
