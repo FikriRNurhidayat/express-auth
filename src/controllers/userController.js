@@ -62,6 +62,13 @@ module.exports = {
       .catch(err => {
         res.json(errorsResponse(err));
       })
+  },
+
+  testIAm(req,res) {
+    res.json({
+      name: "Fikri Rahmat Nurhidayat",
+      age: 19
+    });
   }
 
 }
