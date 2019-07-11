@@ -1,6 +1,6 @@
 // To load environment variable
 const env = process.env.NODE_ENV;
-
+const http = require('http');
 if (!env || env == 'development') {
  const dotenv = require('dotenv');
  dotenv.config();
@@ -41,6 +41,13 @@ app.use(bodyParser.json()); // To parse JSON request
 // Adding route-level middleware
 const router = require('./routes');
 app.use('/api', router); // Using route middleware on express application.
+
+app.get('/test', (req, res) => {
+    res.render('whoAmI', {
+      name: "Fikri Rahmat Nurhidayat",
+      age: 20
+    })
+})
 
 app.listen(port, () => {
   console.log(`Server started at ${Date()}`);
