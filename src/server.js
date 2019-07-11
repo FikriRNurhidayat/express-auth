@@ -6,6 +6,9 @@ if (!env || env == 'development') {
  dotenv.config();
 };
 
+const swaggerUi = require('swagger-ui-express');
+const swaggerDocument = require('./swagger.json')
+
 const responseFormatter = require('./helpers/responseFormatter.js');
 
 const express = require('express');
@@ -19,6 +22,8 @@ mongoose.connect(process.env.DB_CONNECTION, { useNewUrlParser: true }, (err) => 
   if (err) return console.log(err);
   console.log('Database Connected!');
 });
+
+app.use('/kitab', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 app.use((req, res, next) => {
   res.header("Access-Control-Allow-Origin", "*");
