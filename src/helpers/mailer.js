@@ -5,7 +5,7 @@ const { successResponse, errorsResponse } = require('./responseFormatter.js');
 
 const option = {
   auth: {
-    api_key: "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"
+    api_key: process.env.SENDGRID_API_KEY 
   }
 }
 
