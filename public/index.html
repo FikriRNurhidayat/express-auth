@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Express Auth</title>
+    <meta charset="UTF-8">
+    <meta name="description" content="Express Auth API">
+    <meta name="keywords" content="HTML,CSS,JavaScript">
+    <meta name="author" content="Fikri Rahmat Nurhidayat">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/style.css"/>
+  </head>
+  <body>
+    <div class="top">
+      <div class="topContainer">
+        <div class="topTopChild">
+          <h2>Express Auth</h2>
+        </div>
+        <div class="topMiddleChild">
+          <h5>Authentication API using Express.js</h5>
+        </div>
+        <div class="topBottomChild">
+          <button id="redirectButton">Github</button>
+        </div>
+      </div>
+    </div>
+    <div class="bottom">
+      <div class="bottomContainer" id="loginForm">
+        <div class="bottomTopChild">
+          <h2>Login</h2>
+        </div>
+        <div class="bottomMiddleChild">
+          <form>
+            <label>Email</label></br>
+            <input type="email" id="email" placeholder="Enter email here!"></br>
+            <label>Password</label></br>
+            <input type="password" id="password" placeholder="Enter password here!"></br>
+            <button id="loginButton" type="button">Login</button>
+          </form>
+        </div>
+        <div class="bottomBottomChild">
+          <div class="bottomButton">
+            <button id="registerRedirect" type="button">Don't have account yet?</button>
+          </div>
+        </div>
+      </div>
+      <div class="bottomContainer" id="registerForm">
+        <div class="bottomTopChild">
+          <h2>Register</h2>
+        </div>
+        <div class="bottomMiddleChild">
+          <div class="registerTitle">
+            <h5>Please fill up the form!</h5>
+          </div>
+          <div class="registerForm">
+            <form>
+              <input type="text" id="nameRegister" placeholder="Nickname"></br>
+              <input type="email" id="emailRegister" placeholder="Email"></br>
+              <input type="password" id="passwordRegister" placeholder="Password"></br>
+              <input type="password" id="passwordConfirmationRegister" placeholder="Confirm Password"></br>
+              <button id="registerButton" type="button">Register</button>
+            </form>
+          </div>
+        </div>
+        <div class="bottomBottomChild">
+          <div class="bottomButton">
+            <button id="loginRedirect" type="button">Did you just say you have one?</button>
+          </div>
+        </div>
+      </div>
+      <div class="bottomContainer" id="userLogin">
+        <div class="bottomTopChild" id="helloContainer">
+        </div>
+        <div class="isVerified" id="helloVerified">
+        </div>
+        <div class="bottomBottomChild" id="helloLogout">
+          <button id="logoutButton" type="button">Logout</button>
+        </div>
+      </div>
+    </div>
+    <script src="/main.js"></script>
+  </body>
+</html>

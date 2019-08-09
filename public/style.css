@@ -1,0 +1,153 @@
+body {
+  margin:0;
+  width:100%;
+  font-family: 'Roboto', sans-serif;
+}
+
+::-webkit-scrollbar { width: 0 !important }
+
+.top {
+  width:100%;
+  height: 100vh;
+}
+
+.topContainer {
+  position: relative;
+  width: 75%;
+  top:50%;
+  left:50%;
+  transform: translate(-50%, -50%);
+  text-align:center;
+  padding:16px;
+}
+
+.topTopChild {
+  font-size:2em;
+}
+
+.topMiddleChild {
+  font-size:1.4em;
+  font-weight:100;
+}
+
+.topBottomChild button {
+  padding:8px 16px;
+  border:solid 2px;
+  border-color:#000;
+  background:#000;
+  color:#fff;
+  font-size:1.2em;
+  font-weight:bolder;
+  text-decoration:none;
+  text-transform:uppercase;
+}
+
+.bottom {
+  width:100%;
+  height:100vh;
+  background:#000;
+}
+
+#registerForm .bottomMiddleChild {
+  max-width:320px;
+  padding:32px 0;
+}
+
+
+#registerForm .bottomMiddleChild button {
+  font-size:1.2em;
+}
+
+#registerForm .bottomMiddleChild input {
+  height:48px;
+  font-size:1em;
+  width:75%;
+  margin:8px 0;
+  border-radius:16px;
+}
+
+.bottomContainer {
+  text-align:center;
+  position:relative;
+  max-width:75%;
+  left:50%;
+  top:50%;
+  transform:translate(-50%,-50%);
+}
+
+.bottomTopChild {
+  font-size:2em;
+  font-weight:100;
+  color:#fff;
+}
+
+.bottomMiddleChild {
+  color:#000;
+  margin: 0 auto;
+  max-width:320px;
+  background:#fff;
+  padding:64px 0;
+  border: none;
+  border-radius:16px;
+}
+
+.bottomMiddleChild input {
+  text-align:center;
+  border:solid 2px;
+  border-radius:8px;
+  border-color:rgba(0,0,0,0.8); 
+  margin:16px 0;
+  height:32px;
+  width:75%;
+}
+
+.bottomMiddleChild label {
+  font-size:1.5em;
+}
+
+.bottomMiddleChild button {
+  margin-top:16px;
+  padding:16px 16px;
+  background-color:#000;
+  border:none;
+  color:#fff;
+  text-transform:uppercase;
+  font-weight:100;
+  font-size:1.25em;
+  border-radius:32px;
+}
+
+#logoutButton {
+  text-transform:uppercase;
+  padding:16px 16px;
+  font-size:1.2em;
+  font-weight:100;
+  color:#000;
+  border:none;
+  background:#fff;
+  border-radius:32px;
+}
+
+.bottomBottomChild {
+  margin:16px;
+}
+
+.bottomBottomChild button {
+  border:none;
+  background:none;
+  color:#fff;
+  font-size:0.8em;
+}
+
+.isVerified {
+  color:#fff;
+}
+
+#userLogin h1 {
+  margin:16px;
+}
+
+
+#userLogin h5 {
+  margin:8px;
+}
