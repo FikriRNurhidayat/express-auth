@@ -16,14 +16,16 @@ const app = express();
 const port = process.env.PORT || 8000;
 const mongoose = require('mongoose');
 
-console.log(process.env.DB_CONNECTION);
+// Logger
+const morgan = require('morgan');
+app.use(morgan('dev'));
+
 // Connect to database
-mongoose.connect(process.env.DB_CONNECTION, { useNewUrlParser: true }, (err) => {
+mongoose.connect(process.env.DB_CONNECTION, { useNewUrlParser: true, useCreateIndex: true }, (err) => {
   if (err) return console.log(err);
-  console.log('Database Connected!');
 });
 
-app.use('/kitab', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+app.use('/documentation', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 app.use((req, res, next) => {
   res.header("Access-Control-Allow-Origin", "*");
@@ -32,11 +34,7 @@ app.use((req, res, next) => {
 })
 
 // Root path
-app.set('view engine', 'ejs');
 app.use(express.static(__dirname + '/../public'));
-app.all('/', (req, res) => {
-  res.render('index')
-})
 
 // Using body-parser
 const bodyParser = require('body-parser'); // Import body-parser library
@@ -46,13 +44,6 @@ app.use(bodyParser.json()); // To parse JSON request
 // Adding route-level middleware
 const router = require('./routes');
 app.use('/api', router); // Using route middleware on express application.
-
-app.get('/test', (req, res) => {
-    res.render('whoAmI', {
-      name: "Fikri Rahmat Nurhidayat",
-      age: 20
-    })
-})
 
 app.listen(port, () => {
   console.log(`Server started at ${Date()}`);

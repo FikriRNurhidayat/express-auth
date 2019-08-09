@@ -10,7 +10,7 @@ module.exports = {
   createUser(req, res) {
     // Validate if password field and password_confirmation field are matched
     if (req.body.password !== req.body.password_confirmation) {
-      return res.json(errorsResponse('Password should have matched!'));
+      return res.status(422).json(errorsResponse('Password should have matched!'));
     }
 
     // Encrypt inputted password from user
@@ -24,29 +24,34 @@ module.exports = {
     });
     userPromise.save()
       .then((user) => {
-	let verifyLink = jwt.sign({_id: user.email}, process.env.SECRET_OR_KEY);
-	let regMail = format(req.body.email, 'Welcome to Express Auth', confirmation(user, verifyLink));
-	sendEmail(regMail);
-        res.json(successResponse('User created!'));
+        let token = jwt.sign({_id: user._id}, process.env.SECRET_OR_KEY);
+        let regMail = format(req.body.email, 'Welcome to Express Auth', confirmation(user, token));
+        sendEmail(regMail);
+        res.status(201).json(successResponse(token));
       })
      .catch(err => {
-	console.log(err);
-        res.json(errorsResponse(err));
+        res.status(422).json(errorsResponse(err.message));
       })
   },
 
   confirmUser(req, res) {
     let userId = jwt.verify(req.params.id, process.env.SECRET_OR_KEY);
-    console.log(userId._id);
-    User.updateOne({ email: userId._id }, { isVerified: true })
-      .then(() => {
-	let confirmAedMaiAl = format(userId._id, 'Thanks for your confirmation!', confirmed());
-	sendEmail(confirmedMail);
-        res.render('index');
-      })
-      .catch(err => {
-        res.json(errorsResponse(err));
-      })
+
+    User.findOne({ _id: userId._id }, (err, data) => {
+      if (data.isVerified == false) {
+        return User.findOneAndUpdate({ _id: userId._id }, { isVerified: true })
+          .then(user => {
+            let confirmedMail = format(data.email, 'Thanks for your confirmation!', confirmed());
+            sendEmail(confirmedMail);
+            res.redirect('/');
+          })
+          .catch(err => {
+            res.json(errorsResponse(err));
+          })
+      }
+
+      res.redirect('/')
+    })
   },
 
   whoAmI(req, res) {
@@ -55,20 +60,12 @@ module.exports = {
     })
       .then(user => {
         res.json(successResponse({
-	  name: user.name,
-          email: user.email
-	}))
+          name: user.name,
+          isVerified: user.isVerified
+        }));
       })
       .catch(err => {
         res.json(errorsResponse(err));
       })
-  },
-
-  testIAm(req,res) {
-    res.json({
-      name: "Fikri Rahmat Nurhidayat",
-      age: 19
-    });
   }
-
 }

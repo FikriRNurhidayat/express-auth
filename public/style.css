@@ -1,161 +1,153 @@
 body {
-  margin: 0;
+  margin:0;
   width:100%;
-  font-family: 'Roboto', sans-serif; 
+  font-family: 'Roboto', sans-serif;
 }
 
-#a1 {
+::-webkit-scrollbar { width: 0 !important }
+
+.top {
   width:100%;
-  height:100vh;
+  height: 100vh;
 }
 
-#b11 {
-  width:50%;
-  position:relative;
+.topContainer {
+  position: relative;
+  width: 75%;
   top:50%;
   left:50%;
   transform: translate(-50%, -50%);
-  padding: 2px;
-}
-
-#c11 {
   text-align:center;
-  margin:0;
+  padding:16px;
 }
 
-#c11 h1 {
-  margin:0;
-  font-weight:bold;
-  font-size:2.5em;
-}
-
-#c21 {
-  text-align:center;
-  margin:0;
-  padding:3.5%;
-}
-
-#c21 h5 {
-  margin:0;
-  font-size:1.5em;
-  font-weight:normal;
-}
-
-#c31 {
-  text-align:center;
-  padding:10px;
-}
-
-#c31 a {
-  padding: 10px 10px;
-  background:#000;
-  text-decoration:none;
-  color:#fff;
-  font-weight:bold;
-  text-transform:uppercase;
-}
-
-#a2 {
-  width:100%;
-  height:100vh;
-  background:#000;
-}
-
-#b12 {
-  width:50%;
-  position:relative;
-  top:50%;
-  left:50%;
-  transform: translate(-50%, -50%);
-  padding: 2px;
-}
-
-#c12 {
-  text-align:center;
-  text-transform:uppercase;
-  color:#fff;
+.topTopChild {
   font-size:2em;
 }
 
-#c22 {
-  text-align:center;
+.topMiddleChild {
+  font-size:1.4em;
+  font-weight:100;
+}
+
+.topBottomChild button {
+  padding:8px 16px;
+  border:solid 2px;
+  border-color:#000;
+  background:#000;
   color:#fff;
-}
-
-#c22 label {
-  font-size:1.3em;
-}
-
-#c22 input {
-  color:#000;
-  font-weight: lighter;
-  font-size:0.8em;
-  text-align: center;
-  width:30%;
-  margin:10px;
-  padding:10px;
-}
-
-#c22 button {
-  margin:10px;
-  border:none;
-  padding:10px;
-  background-color:white;
+  font-size:1.2em;
+  font-weight:bolder;
   text-decoration:none;
-  color:#000;
   text-transform:uppercase;
+}
+
+.bottom {
+  width:100%;
+  height:100vh;
+  background:#000;
+}
+
+#registerForm .bottomMiddleChild {
+  max-width:320px;
+  padding:32px 0;
+}
+
+
+#registerForm .bottomMiddleChild button {
+  font-size:1.2em;
+}
+
+#registerForm .bottomMiddleChild input {
+  height:48px;
   font-size:1em;
-  font-weight:bold;
+  width:75%;
+  margin:8px 0;
+  border-radius:16px;
 }
 
-#c32 {
-  text-align: center;
-}
-
-#c42 {
-  margin:10px;
+.bottomContainer {
   text-align:center;
-}
-
-#signUp {
-  font-size:0.6em;
-  padding:5px 16px;
-  background:none;
-  color:#fff;
-  border:solid 1px #fff;
-  border-radius: 20px;
-}
-
-#signUp:hover {
-  color:#000;
-  background:rgba(255,255,255);
-}
-
-#forgotPassword {
-  font-size:0.6em;
-  padding:5px 16px;
-  background:none;
-  color:#fff;
-  border:solid 1px #fff;
-  border-radius: 20px;
-}
-
-#b22 {
-  color:#fff;
-  text-align:center;
-  font-size:2em;
   position:relative;
-  top:50%;
+  max-width:75%;
   left:50%;
-  transform:translate(-50%, -50%);
+  top:50%;
+  transform:translate(-50%,-50%);
+}
+
+.bottomTopChild {
+  font-size:2em;
+  font-weight:100;
+  color:#fff;
+}
+
+.bottomMiddleChild {
+  color:#000;
+  margin: 0 auto;
+  max-width:320px;
+  background:#fff;
+  padding:64px 0;
+  border: none;
+  border-radius:16px;
+}
+
+.bottomMiddleChild input {
+  text-align:center;
+  border:solid 2px;
+  border-radius:8px;
+  border-color:rgba(0,0,0,0.8); 
+  margin:16px 0;
+  height:32px;
+  width:75%;
+}
+
+.bottomMiddleChild label {
+  font-size:1.5em;
+}
+
+.bottomMiddleChild button {
+  margin-top:16px;
+  padding:16px 16px;
+  background-color:#000;
+  border:none;
+  color:#fff;
+  text-transform:uppercase;
+  font-weight:100;
+  font-size:1.25em;
+  border-radius:32px;
 }
 
 #logoutButton {
-  padding:10px;
+  text-transform:uppercase;
+  padding:16px 16px;
+  font-size:1.2em;
+  font-weight:100;
   color:#000;
   border:none;
-  font-weight: bold;
-  text-transform:uppercase;
-  font-size:0.5em;
+  background:#fff;
+  border-radius:32px;
 }
 
+.bottomBottomChild {
+  margin:16px;
+}
+
+.bottomBottomChild button {
+  border:none;
+  background:none;
+  color:#fff;
+  font-size:0.8em;
+}
+
+.isVerified {
+  color:#fff;
+}
+
+#userLogin h1 {
+  margin:16px;
+}
+
+
+#userLogin h5 {
+  margin:8px;
+}

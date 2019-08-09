@@ -1,14 +1,14 @@
 module.exports = {
   successResponse(data) {
     return {
-      status: 'OK',
-      result: data
+      success: true,
+      data: data
     }
   },
 
   errorsResponse(err) {
     return {
-      status: 'Failed',
+      success: false,
       errors: err
     }
   }
