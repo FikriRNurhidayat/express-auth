@@ -32,7 +32,7 @@ module.exports = {
   },
 
   confirmation(data, link) {
-    return `<h5>Hello ${data.name}<h5>`+`<p>Please do confirm your email address! In publishing and graphic design, lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document without relying on meaningful content. Replacing the actual content with placeholder text allows designers to design the form of the content before the content itself has been produced.<p>`+`<a href="http://localhost:8000/api/users/confirm/${link}">Click here to confirm!</a>`
+    return `<h5>Hello ${data.name}<h5>`+`<p>Please do confirm your email address! In publishing and graphic design, lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document without relying on meaningful content. Replacing the actual content with placeholder text allows designers to design the form of the content before the content itself has been produced.<p>`+`<a href="https://api-auth-training.herokuapp.com/api/users/confirm/${link}">Click here to confirm!</a>`
   },
 
   confirmed() {
