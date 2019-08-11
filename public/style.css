@@ -16,9 +16,22 @@ body {
   width: 75%;
   top:50%;
   left:50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%,-50%);
   text-align:center;
   padding:16px;
+  animation: appear 2s;
+}
+
+@keyframes appear {
+  from {
+    transform: translate(-50%,-25%);
+    opacity:0;
+  }
+
+  to {
+    transform: translate(-50%,-50%);
+    opacity:1;
+  }
 }
 
 .topTopChild {

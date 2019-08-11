@@ -61,6 +61,7 @@ if (token !== null) {
 
     document.getElementById("helloContainer").appendChild(greetElement);
     isVerified.appendChild(verifiedElement);
+    userLogin.style.animation = "appear 2s";
 
   }).catch(err => {
     console.log(err);
@@ -134,9 +135,27 @@ logoutButton.onclick = function() {
 registerRedirect.onclick = function() {
   loginForm.style.display = 'none';
   registerForm.style.display = '';
+  registerForm.style.animation = 'appear 1s';
 }
 
 loginRedirect.onclick = function() {
-  loginForm.style.display = '';
   registerForm.style.display = 'none';
+  loginForm.style.display = '';
+  loginForm.style.animation = 'appear 1s';
 }
+
+function triggerButton(event, button) {
+  if (event.keyCode == 13) {
+    button.click();
+  }
+}
+
+// Trigger click button on "Press Enter" event.
+document.getElementById("password").addEventListener("keyup", (event) => {
+  triggerButton(event, loginButton);
+});
+
+
+document.getElementById("email").addEventListener("keyup", (event) => {
+  triggerButton(event, loginButton);
+});
