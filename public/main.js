@@ -70,6 +70,7 @@ if (token !== null) {
 
 if (token == null) {
   loginForm.style.display = '';
+  loginForm.style.animation = 'appear 2s';
 }
 
 loginButton.onclick = async function() {
