@@ -27,50 +27,53 @@ redirectButton.onmouseout = function() {
 
 var token = localStorage.getItem('token');
 
-if (token !== null) {
-  async function getUser() {
-    let res = await fetch('/api/users', {
-      method: 'GET',
-      headers: {
-        'Authorization': localStorage.getItem('token')
+window.onload = function() {
+  if (token !== null) {
+    async function getUser() {
+      let res = await fetch('/api/users', {
+        method: 'GET',
+        headers: {
+          'Authorization': localStorage.getItem('token')
+        }
+      })
+
+      let response = await res.json();
+
+      return response;
+    }
+    getUser().then(res => {
+      userLogin.style.display = "";
+      let verifiedElement = document.createElement("h4");
+      let verified;
+
+      if (res.data.isVerified) {
+        verified = document.createTextNode(`You've verified your email, thank you!`);
       }
+
+      else {
+        verified = document.createTextNode(`Please verify your email!`);
+      }
+
+      verifiedElement.appendChild(verified);
+
+      let greetElement = document.createElement("h1");
+      let greet = document.createTextNode(`Hello, ${res.data.name}!`);
+      greetElement.appendChild(greet);
+
+      document.getElementById("helloContainer").appendChild(greetElement);
+      isVerified.appendChild(verifiedElement);
+      userLogin.style.animation = "appear 2s";
+
+    }).catch(err => {
+      console.log(err);
     })
-
-    let response = await res.json();
-
-    return response;
   }
-  getUser().then(res => {
-    userLogin.style.display = "";
-    let verifiedElement = document.createElement("h4");
-    let verified;
 
-    if (res.data.isVerified) {
-      verified = document.createTextNode(`You've verified your email, thank you!`);
-    }
-
-    else {
-      verified = document.createTextNode(`Please verify your email!`);
-    }
-
-    verifiedElement.appendChild(verified);
-
-    let greetElement = document.createElement("h1");
-    let greet = document.createTextNode(`Hello, ${res.data.name}!`);
-    greetElement.appendChild(greet);
-
-    document.getElementById("helloContainer").appendChild(greetElement);
-    isVerified.appendChild(verifiedElement);
-    userLogin.style.animation = "appear 2s";
-
-  }).catch(err => {
-    console.log(err);
-  })
-}
-
-if (token == null) {
-  loginForm.style.display = '';
-  loginForm.style.animation = 'appear 2s';
+  if (token == null) {
+    registerForm.style.display = 'none';
+    loginForm.style.display = '';
+    loginForm.style.animation = 'appear 2s';
+  }
 }
 
 loginButton.onclick = async function() {
