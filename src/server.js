@@ -1,7 +1,7 @@
 // To load environment variable
-const env = process.env.NODE_ENV;
+const env = process.env.NODE_ENV || 'development';
 const http = require('http');
-if (!env || env == 'development') {
+if (!env || env == 'development' || env == 'test') {
  const dotenv = require('dotenv');
  dotenv.config();
 };
@@ -21,7 +21,8 @@ const morgan = require('morgan');
 app.use(morgan('dev'));
 
 // Connect to database
-mongoose.connect(process.env.DB_CONNECTION, { useNewUrlParser: true, useCreateIndex: true }, (err) => {
+const dbConnection = require('./config.js')[env];
+mongoose.connect(dbConnection, { useNewUrlParser: true, useCreateIndex: true }, (err) => {
   if (err) return console.log(err);
 });
 
@@ -45,7 +46,4 @@ app.use(bodyParser.json()); // To parse JSON request
 const router = require('./routes');
 app.use('/api', router); // Using route middleware on express application.
 
-app.listen(port, () => {
-  console.log(`Server started at ${Date()}`);
-  console.log(`Listening on port ${port}!`);
-});
+module.exports = app;

@@ -4,14 +4,22 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node src/server.js",
-    "dev": "nodemon src/server.js"
+    "start": "node bin/*",
+    "dev": "nodemon bin/*",
+    "test": "mocha test/* --exit",
+    "test:coverage": "nyc --report-dir=./public/coverage --reporter=html npm run test"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "nodemon": "^1.19.1"
+    "chai": "^4.2.0",
+    "chai-http": "^4.3.0",
+    "faker": "^4.1.0",
+    "istanbul": "^0.4.5",
+    "mocha": "^6.2.0",
+    "nodemon": "^1.19.1",
+    "sinon": "^7.4.1"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",

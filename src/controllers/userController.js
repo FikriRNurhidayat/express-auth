@@ -46,7 +46,7 @@ module.exports = {
             res.redirect('/');
           })
           .catch(err => {
-            res.json(errorsResponse(err));
+            res.status(422).json(errorsResponse(err));
           })
       }
 
