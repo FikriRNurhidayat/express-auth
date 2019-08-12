@@ -20,9 +20,9 @@ Variable that should be available on your system. So please insert this followin
 * [Live Server](https://api-auth-training.herokuapp.com)
 
 ## Test
-Coverage of the intergation test isn't 100% yet.
-```npm run test``` To run the test
-```npm run test:coverage``` to generate the coverage report from the test, ```/public/coverage```
+* Coverage of the intergation test isn't 100% yet.
+* ```npm run test``` To run the test
+* ```npm run test:coverage``` to generate the coverage report from the test, ```/public/coverage```
 
 ## Documentation
 Just visit this link:
