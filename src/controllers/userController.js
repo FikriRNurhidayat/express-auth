@@ -7,33 +7,6 @@ const { sendEmail, format, confirmation, confirmed } = require('../helpers/maile
 
 module.exports = {
 
-  createUser(req, res) {
-    // Validate if password field and password_confirmation field are matched
-    if (req.body.password !== req.body.password_confirmation) {
-      return res.status(422).json(errorsResponse('Password should have matched!'));
-    }
-
-    // Encrypt inputted password from user
-    var encryptedPassword = encryptor(req.body.password);
-
-    // Create new user after passing requirement above
-    var userPromise = new User({
-      name: req.body.name,
-      email: req.body.email,
-      password: encryptedPassword
-    });
-    userPromise.save()
-      .then((user) => {
-        let token = jwt.sign({_id: user._id}, process.env.SECRET_OR_KEY);
-        let regMail = format(req.body.email, 'Welcome to Express Auth', confirmation(user, token));
-        sendEmail(regMail);
-        res.status(201).json(successResponse(token));
-      })
-     .catch(err => {
-        res.status(422).json(errorsResponse(err.message));
-      })
-  },
-
   confirmUser(req, res) {
     let userId = jwt.verify(req.params.id, process.env.SECRET_OR_KEY);
 

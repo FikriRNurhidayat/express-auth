@@ -79,6 +79,11 @@ window.onload = function() {
 loginButton.onclick = async function() {
   var email = document.getElementById("email").value;
   var password = document.getElementById("password").value;
+
+  if (email == '' || password == '') {
+    return alert("Please fill all required field!");
+  }
+
   var loginRequest = {
     email: email,
     password: password
@@ -111,7 +116,7 @@ registerButton.onclick = async function() {
     password_confirmation: document.getElementById("passwordConfirmationRegister").value,
   }
 
-  let res = await fetch('/api/users', {
+  let res = await fetch('/api/auth/register', {
     method: 'POST',
     headers: {
       'Content-Type':'application/json'
@@ -122,7 +127,7 @@ registerButton.onclick = async function() {
   let response = await res.json();
 
   if (response.success) {
-    localStorage.setItem('token', response.data);
+    localStorage.setItem('token', response.data.token);
     window.location.reload();
   }
 
