@@ -19,10 +19,12 @@ module.exports = {
           res.status(200).json(successResponse(data));
         })
         .catch(err => {
+          console.log(err)
           res.status(403).json(errorsResponse(err));
         })
     }
 
+    console.log(isValid);
     return res.status(400).json(errorsResponse(isValid));
   },
 
