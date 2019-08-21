@@ -2,16 +2,19 @@ const jwt = require('jsonwebtoken');
 const { errorsResponse } = require('./responseFormatter.js');
 
 module.exports = function (req, res, next) {
+  console.log(req.headers);
   var headerToken = req.headers.authorization;
   if (!headerToken) {
-    return res.status(403).json(errorsResponse('Denied!'));
+    return res.status(401).json(errorsResponse('Denied!'));
   }
 
-  var isUser = jwt.verify(headerToken, process.env.SECRET_OR_KEY);
-  if (isUser) {
-    req.user = isUser;
+  try {
+    console.log(req.header.authorzation);
+    req.headers.authorization = jwt.verify(headerToken.split(" ")[1], process.env.SECRET_OR_KEY); 
     next();
-  } else {
-    return res.status(403).json(errorsResponse('Invalid token!'));
+  }
+
+  catch (err) {
+    res.status(401).json(errorsResponse("Invalid Token!"));
   }
 }

@@ -29,7 +29,7 @@ module.exports = {
 
   whoAmI(req, res) {
     User.findOne({
-      _id: req.user._id
+      _id: req.headers.authorization._id
     })
       .then(user => {
         res.json(successResponse({
@@ -39,6 +39,14 @@ module.exports = {
       })
       .catch(err => {
         res.json(errorsResponse(err));
+      })
+  },
+
+  currentUser(req, res) {
+    let user = jwt.verify(req.headers.authorization, process.env.SECRET_OR_KEY);
+    User.findById(user._id)
+      .then(data => {
+        res.status(200).json(successResponse(data));
       })
   }
 }

@@ -12,7 +12,7 @@
       "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
     }
   },
-  "host": "api-auth-training.herokuapp.com",
+  "host": "",
   "basePath": "/api",
   "tags": [
     {
@@ -30,38 +30,6 @@
   ],
   "paths": {
     "/users": {
-      "post": {
-        "tags": [
-          "User Operation"
-        ],
-        "summary": "Register User",
-        "description": "",
-        "operationId": "addUser",
-        "consumes": [
-          "application/json",
-          "application/xml"
-        ],
-        "produces": [
-          "application/xml",
-          "application/json"
-        ],
-        "parameters": [
-          {
-            "in": "body",
-            "name": "body",
-            "description": "Users that will be registered on database",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/UserRegister"
-            }
-          }
-        ],
-        "responses": {
-          "405": {
-            "description": "Invalid input"
-          }
-        }
-      },
       "get": {
         "tags": [
           "User Operation"
@@ -72,7 +40,6 @@
           "application/json"
         ],
         "produces": [
-          "application/xml",
           "application/json"
         ],
         "responses": {
@@ -95,11 +62,9 @@
         "summary": "Login User",
         "description": "User login",
         "consumes": [
-          "application/json",
-          "application/xml"
+          "application/json"
         ],
         "produces": [
-          "application/xml",
           "application/json"
         ],
         "parameters": [
@@ -116,6 +81,38 @@
         "responses": {
           "200": {
             "description": "If user exist, and  the password is matched. It will response token object."
+          }
+        }
+      }
+    },
+    "/auth/register": {
+      "post": {
+        "tags": [
+          "User Operation"
+        ],
+        "summary": "Register User",
+        "description": "",
+        "operationId": "addUser",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Users that will be registered on database",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/UserRegister"
+            }
+          }
+        ],
+        "responses": {
+          "405": {
+            "description": "Invalid input"
           }
         }
       }

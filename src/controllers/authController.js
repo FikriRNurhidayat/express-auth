@@ -32,15 +32,15 @@ module.exports = {
     let isValid = registerValidator(req.body);
 
     if (isValid == true) {
-    return User.register(req.body)
-      .then(data => {
-        let activationEmail = format(req.body.email, 'Welcome to Express Auth', confirmation(data, data.token));
-        sendEmail(activationEmail);
-        res.status(201).json(successResponse(data));
-      })
-      .catch(err => {
-        res.status(422).json(errorsResponse(err));
-      });
+      return User.register(req.body)
+        .then(data => {
+          let activationEmail = format(req.body.email, 'Welcome to Express Auth', confirmation(data, data.token));
+          sendEmail(activationEmail);
+          res.status(201).json(successResponse(data));
+        })
+        .catch(err => {
+          res.status(422).json(errorsResponse(err));
+        });
     }
 
     return res.status(400).json(errorsResponse(isValid));
