@@ -3,6 +3,7 @@ stages:
   - deploy
 
 test:
+  image: node:10.16
   stage: test
   environment: test
   variables:
