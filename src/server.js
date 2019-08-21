@@ -25,6 +25,8 @@ const dbConnection = require('./config.js')[env];
 console.log(dbConnection);
 mongoose.connect(dbConnection, { useNewUrlParser: true, useCreateIndex: true }, (err) => {
   if (err) return console.log(err);
+
+  console.log("Database Connected!");
 });
 
 app.use('/documentation', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
