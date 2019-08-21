@@ -45,7 +45,7 @@ describe('Users API', () => {
         .end((err, res) => {
             res.should.have.status(201);
             res.body.success.should.equal(true);
-            res.body.data.should.be.a('string');
+            res.body.data.should.be.an('object');
           done();
         })
     });
@@ -76,9 +76,8 @@ describe('Users API', () => {
         .post('/api/auth/register')
         .send(anotherUserData)
         .end((err, res) => {
-            res.should.have.status(422);
+            res.should.have.status(400);
             res.body.success.should.equal(false);
-            res.body.errors.should.equal("Password should have matched!");
           done();
         });
     });
