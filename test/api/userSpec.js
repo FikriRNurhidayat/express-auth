@@ -15,12 +15,20 @@ beforeEach(done => {
   User.deleteMany({})
     .then(() => {
       done();
+    })
+    .catch(err => {
+      console.log(err)
+      done();
     });
 });
 
 afterEach(done => {
   User.deleteMany({})
     .then(() => {
+      done();
+    })
+    .catch(err => {
+      console.log(err);
       done();
     })
 })
