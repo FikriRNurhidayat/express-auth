@@ -14,6 +14,7 @@ chai.use(chaiHttp);
 describe('Users API', () => {
 
   beforeEach(done => {
+    console.log(User);
     User.deleteMany({})
       .then(() => {
         done();
