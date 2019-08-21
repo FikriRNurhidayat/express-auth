@@ -40,7 +40,7 @@ describe('Users API', () => {
     it("Should create new user", done => {
       chai
         .request(server)
-        .post('/api/users')
+        .post('/api/auth/register')
         .send(userData)
         .end((err, res) => {
             res.should.have.status(201);
@@ -56,7 +56,7 @@ describe('Users API', () => {
         .then(data => {  
           chai
             .request(server)
-            .post('/api/users')
+            .post('/api/auth/register')
             .send(userData)
             .end((err, res) => {
                 res.should.have.status(422);
@@ -73,7 +73,7 @@ describe('Users API', () => {
       anotherUserData.password_confirmation = faker.lorem.words;
       chai
         .request(server)
-        .post('/api/users')
+        .post('/api/auth/register')
         .send(anotherUserData)
         .end((err, res) => {
             res.should.have.status(422);
