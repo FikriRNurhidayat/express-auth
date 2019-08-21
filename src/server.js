@@ -22,7 +22,8 @@ app.use(morgan('dev'));
 
 // Connect to database
 const dbConnection = require('./config.js')[env];
-mongoose.connect('mongodb+srv://trguy:awurenwae@auth-training-i4muv.mongodb.net/express_auth?retryWrites=true&w=majority', { useNewUrlParser: true, useCreateIndex: true }, (err) => {
+console.log(dbConnection);
+mongoose.connect(dbConnection, { useNewUrlParser: true, useCreateIndex: true }, (err) => {
   if (err) return console.log(err);
 });
 
