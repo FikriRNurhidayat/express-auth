@@ -1,0 +1,21 @@
+stages:
+  - test
+  - deploy
+
+test:
+  stage: test
+  environment: test
+  variables:
+    NODE_ENV: test
+    DBCONNECTION_TEST: mongodb+srv://trguy:awurenwae@auth-training-i4muv.mongodb.net/test?retryWrites=true&w=majority
+  script:
+    - npm install
+    - npm test
+
+deploy-to-heroku:
+  stage: deploy
+  script:
+    - gem install dpl
+    - dpl --provider=heroku --app=$APP_NAME --api-key=$HEROKU_API_KEY
+  only:
+    - master

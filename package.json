@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node bin/*",
     "dev": "nodemon bin/*",
-    "test": "mocha test/* --exit",
+    "test": "NODE_ENV=test mocha test/* --exit",
     "test:coverage": "nyc --report-dir=./public/coverage --reporter=html npm run test"
   },
   "keywords": [],
