@@ -12,7 +12,6 @@ test:
     NODE_ENV: test
     DBCONNECTION_TEST: mongodb+srv://trguy:awurenwae@auth-training-i4muv.mongodb.net/test?retryWrites=true&w=majority
   script:
-    - npm install npm@latest -g
     - npm install
     - npm test
 

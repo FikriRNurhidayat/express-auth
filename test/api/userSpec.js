@@ -11,29 +11,29 @@ const jwt = require('jsonwebtoken');
 
 chai.use(chaiHttp);
 
-beforeEach(done => {
-  User.deleteMany({})
-    .then(() => {
-      done();
-    })
-    .catch(err => {
-      console.log(err)
-      done();
-    });
-});
-
-afterEach(done => {
-  User.deleteMany({})
-    .then(() => {
-      done();
-    })
-    .catch(err => {
-      console.log(err);
-      done();
-    })
-})
-
 describe('Users API', () => {
+
+  beforeEach(done => {
+    User.deleteMany({})
+      .then(() => {
+        done();
+      })
+      .catch(err => {
+        console.log(err)
+        done();
+      });
+  });
+
+  afterEach(done => {
+    User.deleteMany({})
+      .then(() => {
+        done();
+      })
+      .catch(err => {
+        console.log(err);
+        done();
+      })
+  });
 
   let password = faker.internet.password();
   const userData = {
