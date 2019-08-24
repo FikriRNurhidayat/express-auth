@@ -20,3 +20,7 @@ h2 {
   display:none;
 }
 
+.swagger-ui .scheme-container {
+   background: none;
+   box-shadow: none;
+}
