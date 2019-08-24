@@ -12,11 +12,7 @@ h2 {
   margin:auto;
 }
 
-.swagger-ui .info {
-  text-align:center;
-}
-
-.swagger-ui .info .title small, .swagger-ui .info pre.base-url, .swagger-ui .description, .swagger-ui .topbar {
+.swagger-ui .info, .swagger-ui .topbar {
   display:none;
 }
 
