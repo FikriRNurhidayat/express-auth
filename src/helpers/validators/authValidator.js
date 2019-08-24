@@ -17,6 +17,7 @@ for (let i in userSchema) {
 module.exports = {
   loginValidator: function(data) {
     delete userSchema.name;
+    delete userSchema.password_confirmation;
     return validator.compile(userSchema)(data);
   },
 

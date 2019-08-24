@@ -22,7 +22,6 @@ app.use(morgan('dev'));
 
 // Connect to database
 const dbConnection = require('./config.js')[env];
-console.log(dbConnection);
 mongoose.connect(dbConnection, { useNewUrlParser: true, useCreateIndex: true }, (err) => {
   if (err) return console.log(err);
 

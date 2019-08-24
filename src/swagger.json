@@ -6,24 +6,10 @@
     "title": "Express Auth",
     "contact": {
       "email": "FikriRNurhidayat@gmail.com"
-    },
-    "license": {
-      "name": "Apache 2.0",
-      "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
     }
   },
   "host": "",
   "basePath": "/api",
-  "tags": [
-    {
-      "name": "User Operation",
-      "description": "Operations about user",
-      "externalDocs": {
-        "description": "Find out more about our store",
-        "url": "http://swagger.io"
-      }
-    }
-  ],
   "schemes": [
     "https",
     "http"
@@ -44,7 +30,22 @@
         ],
         "responses": {
           "200": {
-            "description": "User exist and token verified!"
+            "description": "User exist and token verified!",
+            "schema": {
+              "$ref": "#/definitions/GetUser"
+            }
+          },
+          "401": {
+            "description": "No token provided",
+            "schema": {
+              "$ref": "#/definitions/GetUserNoToken"
+            }
+          },
+          "x-401": {
+            "descripton": "Token provided is invalid",
+            "schema": {
+              "$ref": "#/definitions/GetUserInvalidToken"
+            }
           }
         },
         "security": [
@@ -57,7 +58,7 @@
     "/auth/login": {
       "post": {
         "tags": [
-          "Login"
+          "Authentication Operation"
         ],
         "summary": "Login User",
         "description": "User login",
@@ -79,8 +80,29 @@
           }
         ],
         "responses": {
-          "200": {
-            "description": "If user exist, and  the password is matched. It will response token object."
+          "201": {
+            "description": "If user exist, and  the password is matched. It will response token object.",
+            "schema": {
+              "$ref": "#/definitions/LoginSuccessResponse"
+            }
+          },
+          "400": {
+            "description": "If there's a blank field",
+            "schema": {
+              "$ref": "#/definitions/LoginBlankFieldResponse"
+            }
+          },
+          "401": {
+            "description": "If user doesn't exist",
+            "schema": {
+              "$ref": "#/definitions/LoginEmailNotExistResponse"
+            }
+          },
+          "403": {
+            "description": "If password is wrong",
+            "schema": {
+              "$ref": "#/definitions/LoginWrongPasswordResponse"
+            }
           }
         }
       }
@@ -88,7 +110,7 @@
     "/auth/register": {
       "post": {
         "tags": [
-          "User Operation"
+          "Authentication Operation"
         ],
         "summary": "Register User",
         "description": "",
@@ -111,8 +133,29 @@
           }
         ],
         "responses": {
-          "405": {
-            "description": "Invalid input"
+          "201": {
+            "description": "User successfully registered!",
+            "schema": {
+              "$ref": "#/definitions/RegisterSuccessResponse"
+            }
+          },
+          "400": {
+            "description": "If there's a blank field",
+            "schema": {
+              "$ref": "#/definitions/LoginBlankFieldResponse"
+            }
+          },
+          "422": {
+            "description": "If email has already taken",
+            "schema": {
+              "$ref": "#/definitions/RegisterEmailAlreadyTakenResponse"
+            }
+          },
+          "x-422": {
+            "description": "If password and its confirmation doesn't match",
+            "schema": {
+              "$ref": "#/definitions/RegisterWrongConfirmationResponse"
+            }
           }
         }
       }
@@ -126,6 +169,54 @@
     }
   },
   "definitions": {
+    "GetUser": {
+      "type": "object",
+      "properties": {
+        "success": {
+          "type": "boolean",
+          "example": true
+        },
+        "data": {
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": "string",
+              "example": "Fikri"
+            },
+            "isVerified": {
+              "type": "boolean",
+              "example": false
+            }
+          }
+        }
+      }
+    },
+    "GetUserNoToken": {
+      "type": "object",
+      "properties": {
+        "success": {
+          "type": "boolean",
+          "example": false
+        },
+        "data": {
+          "type": "string",
+          "example": "Denied!"
+        }
+      }
+    },
+    "GetUserInvalidToken": {
+      "type": "object",
+      "properties": {
+        "success": {
+          "type": "boolean",
+          "example": false
+        },
+        "data": {
+          "type": "string",
+          "example": "Invalid Token!"
+        }
+      }
+    },
     "UserRegister": {
       "type": "object",
       "required": [
@@ -169,10 +260,134 @@
           "example": "123456"
         }
       }
+    },
+    "LoginSuccessResponse": {
+      "type": "object",
+      "properties": {
+        "success": {
+          "type": "boolean",
+          "example": true
+        },
+        "data": {
+          "type": "string",
+          "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1NDIxMjA5bGtqYXNsZGppMTIwODMiLCJpYXQiOiIwOTgwOTIxODAifQ.Ar42WEfvN893pZ2GiHc8oew12TTxx1kV-8H-4kqe4qU"
+        }
+      }
+    },
+    "LoginWrongPasswordResponse": {
+      "type": "object",
+      "properties": {
+        "success": {
+          "type": "boolean",
+          "example": false
+        },
+        "errors": {
+          "type": "string",
+          "example": "Wrong Password!"
+        }
+      }
+    },
+    "LoginEmailNotExistResponse": {
+      "type": "object",
+      "properties": {
+        "success": {
+          "type": "boolean",
+          "example": false
+        },
+        "errors": {
+          "type": "string",
+          "example": "User doesn't exist!"
+        }
+      }
+    },
+    "LoginBlankFieldResponse": {
+      "type": "object",
+      "properties": {
+        "success": {
+          "type": "boolean",
+          "example": false
+        },
+        "errors": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "type": {
+                "type": "string",
+                "example": "required"
+              },
+              "field": {
+                "type": "string",
+                "example": "<Your Blank Field>"
+              },
+              "message": {
+                "type": "string",
+                "example": "The '<Your Blank Field>' is required!"
+              }
+            }
+          }
+        }
+      }
+    },
+    "RegisterSuccessResponse": {
+      "type": "object",
+      "properties": {
+        "success": {
+          "type": "boolean",
+          "example": true
+        },
+        "data": {
+          "type": "object",
+          "properties": {
+            "_id": {
+              "type": "string",
+              "example": "5d60bb2b94c73a00178a703a"
+            },
+            "name": {
+              "type": "string",
+              "example": "Fikri"
+            },
+            "email": {
+              "type": "string",
+              "example": "test@mail.com"
+            },
+            "isVerified": {
+              "type": "boolean",
+              "example": false
+            },
+            "token": {
+              "type": "string",
+              "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1NDIxMjA5bGtqYXNsZGppMTIwODMiLCJpYXQiOiIwOTgwOTIxODAifQ.Ar42WEfvN893pZ2GiHc8oew12TTxx1kV-8H-4kqe4qU"
+            }
+          }
+        }
+      }
+    },
+    "RegisterEmailAlreadyTakenResponse": {
+      "type": "object",
+      "properties": {
+        "success": {
+          "type": "boolean",
+          "example": false
+        },
+        "errors": {
+          "type": "string",
+          "example": "Email has already taken!"
+        }
+      }
+    },
+    "RegisterWrongConfirmationResponse": {
+      "type": "object",
+      "properties": {
+        "success": {
+          "type": "boolean",
+          "example": false
+        },
+        "errors": {
+          "type": "string",
+          "example": "Password and its confirmation doesn't match!"
+        }
+      }
     }
-  },
-  "externalDocs": {
-    "description": "Find out more about Swagger",
-    "url": "http://swagger.io"
   }
 }
