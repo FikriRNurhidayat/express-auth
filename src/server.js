@@ -29,7 +29,8 @@ mongoose.connect(dbConnection, { useNewUrlParser: true, useCreateIndex: true }, 
 });
 
 var docsOption = {
-  customCssUrl: '/swagger.css'
+  customCssUrl: '/swagger.css',
+  customJs: '/swagger.js'
 }
 
 app.use('/documentation', swaggerUi.serve, swaggerUi.setup(swaggerDocument, docsOption));
