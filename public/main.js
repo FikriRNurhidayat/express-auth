@@ -33,7 +33,7 @@ window.onload = function() {
       let res = await fetch('/api/users', {
         method: 'GET',
         headers: {
-          'Authorization': localStorage.getItem('token')
+          'Authorization': `Bearer ${localStorage.getItem('token')}`
         }
       })
 
