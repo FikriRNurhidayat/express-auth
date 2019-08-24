@@ -1,0 +1,22 @@
+.body {
+  font-family: 'Roboto', sans-serif;
+}
+
+h2 {
+  padding:0;
+  margin: 4px;
+}
+
+.swagger-ui {
+  width:75%;
+  margin:auto;
+}
+
+.swagger-ui .info {
+  text-align:center;
+}
+
+.swagger-ui .info .title small, .swagger-ui .info pre.base-url, .swagger-ui .description, .swagger-ui .topbar {
+  display:none;
+}
+

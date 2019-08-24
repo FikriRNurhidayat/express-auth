@@ -28,7 +28,11 @@ mongoose.connect(dbConnection, { useNewUrlParser: true, useCreateIndex: true }, 
   console.log("Database Connected!");
 });
 
-app.use('/documentation', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+var docsOption = {
+  customCssUrl: '/swagger.css'
+}
+
+app.use('/documentation', swaggerUi.serve, swaggerUi.setup(swaggerDocument, docsOption));
 
 app.use((req, res, next) => {
   res.header("Access-Control-Allow-Origin", "*");
