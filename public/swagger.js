@@ -7,4 +7,4 @@ function changeIcon() {
   document.getElementsByTagName('head')[0].appendChild(link);
 };
 
-changeIcon();
+window.onload = changeIcon();
