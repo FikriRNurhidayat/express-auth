@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node bin/*",
-    "dev": "nodemon bin/*",
+    "dev": "NODE_ENV=development nodemon bin/* -q",
     "test": "NODE_ENV=test mocha test/* --exit",
     "test:coverage": "nyc --report-dir=./public/coverage --reporter=html npm run test"
   },

@@ -1,0 +1,12 @@
+version: "2"
+services:
+  express_auth:
+    image: fikrirnurhidayat/express-auth:latest
+    build: .
+    ports:
+      - "8080:8080"
+    network_mode: "host"
+    environment:
+      - DB_CONNECTION="mongodb://localhost/express_auth"
+      - NODE_ENV="staging"
+      - SECRET_OR_KEY="I LOVE YOU"
