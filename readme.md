@@ -1,6 +1,14 @@
 # Express Auth With JWT
 This is an example implementation of express authentication API using JWT.
 
+## Requirement
+* ```docker```
+* ```docker-compose```
+* ```MongoDB```
+
+## How to run with docker
+* ```bash ./install.sh```
+
 ## Installation
 * Clone this repository
 * ```npm install```
