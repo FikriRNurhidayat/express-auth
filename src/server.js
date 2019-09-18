@@ -1,6 +1,7 @@
 // To load environment variable
-const env = process.env.NODE_ENV || 'development';
+const env = process.env.NODE_ENV;
 const http = require('http');
+
 if (!env || env == 'development' || env == 'test') {
  const dotenv = require('dotenv');
  dotenv.config();
@@ -22,7 +23,8 @@ app.use(morgan('dev'));
 
 // Connect to database
 const dbConnection = require('./config.js')[env];
-mongoose.connect(dbConnection, { useNewUrlParser: true, useCreateIndex: true }, (err) => {
+
+mongoose.connect(process.env.DB_CONNECTION, { useNewUrlParser: true, useCreateIndex: true }, (err) => {
   if (err) return console.log(err);
 
   console.log("Database Connected!");
@@ -43,6 +45,11 @@ app.use((req, res, next) => {
 
 // Root path
 app.use(express.static(__dirname + '/../public'));
+app.get('/coba', (req, res) => {
+  res.json({
+    message: "Hello World!"
+  })
+})
 
 // Using body-parser
 const bodyParser = require('body-parser'); // Import body-parser library
