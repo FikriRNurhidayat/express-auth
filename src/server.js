@@ -45,11 +45,6 @@ app.use((req, res, next) => {
 
 // Root path
 app.use(express.static(__dirname + '/../public'));
-app.get('/coba', (req, res) => {
-  res.json({
-    message: "Hello World!"
-  })
-})
 
 // Using body-parser
 const bodyParser = require('body-parser'); // Import body-parser library

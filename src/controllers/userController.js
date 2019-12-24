@@ -1,4 +1,5 @@
 const User = require('../models/user.js');
+const Servant = require('../models/servant.js');
 const { successResponse, errorsResponse } = require('../helpers/responseFormatter.js');
 const encryptor = require('../helpers/bcrypt.js');
 const bcrypt = require('bcryptjs');
@@ -47,6 +48,14 @@ module.exports = {
     User.findById(user._id)
       .then(data => {
         res.status(200).json(successResponse(data));
+      })
+  },
+
+  servant(req, res) {
+    Servant.create(req.body)
+      .then(data => {
+        console.log(req.body);
+        res.status(200).json(successResponse("Diancuk"));
       })
   }
 }
